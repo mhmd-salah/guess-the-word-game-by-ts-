@@ -1,11 +1,11 @@
+.container {
+  background-color: red;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-:-moz-any-link {
-  text-decoration: none;
 }
 
 :any-link {
@@ -26,4 +26,6 @@ ul {
 
 .main {
   background-color: red;
-} /*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
