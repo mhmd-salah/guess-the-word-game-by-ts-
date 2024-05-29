@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:-moz-any-link {
+  text-decoration: none;
+}
+
+:any-link {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  background-color: red;
+}
+
+.index {
+  background-color: red;
+}
+
+.main {
+  background-color: red;
+} /*# sourceMappingURL=style.css.map */
