@@ -1,7 +1,3 @@
-.container {
-  background-color: red;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,16 +12,74 @@ ul {
   list-style: none;
 }
 
-.container {
+header {
   background-color: red;
 }
 
-.index {
-  background-color: red;
+body {
+  background-color: #eee;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.main {
-  background-color: red;
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin: 0 0 50px;
+  background-color: white;
+  position: relative;
+  color: #18ba89;
+}
+h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-image: linear-gradient(to right, #f89e13 0%, #f89e13 30%, #18ba89 30%, #18ba89 70%, #27303f 70%);
+  display: block;
+}
+
+.guess-game {
+  text-align: center;
+  width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.guess-game .game-area {
+  text-align: center;
+}
+.guess-game .key-colors h2 {
+  margin-bottom: 15px;
+}
+.guess-game .key-colors .key-color {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  margin-bottom: 14px;
+}
+.guess-game .key-colors .key-color .key {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.guess-game .key-colors .key-color .key.in-place {
+  background-color: #f89e13;
+}
+.guess-game .key-colors .key-color .key.not-in-place {
+  background-color: #18ba89;
+}
+.guess-game .key-colors .key-color .key.no {
+  background-color: #27303f;
+}
+.guess-game .key-colors .key-color .key-text {
+  font-size: 16px;
+  font-family: bold;
 }
 
 /*# sourceMappingURL=style.css.map */

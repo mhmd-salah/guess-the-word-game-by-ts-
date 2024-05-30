@@ -1,0 +1,16 @@
+
+
+// create color checked 
+@mixin colorC{
+  $colorsC:(
+  "in-place":#f89e13,
+  "not-in-place":#18ba89,
+  "no":#27303f,
+);
+
+  @each $class,$color in $colorsC{
+    &.#{$class}{
+      background-color: $color;
+    }
+  }
+}
