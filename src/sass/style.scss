@@ -22,7 +22,11 @@
       background-color: white;
       margin-bottom: 14px;
       .key{
-        @include colorC;
+        @each $class,$color in $colorsC{
+          &.#{$class}{
+            background-color: $color;
+          }
+        }
         width: 30px;
         height: 30px;
         border-radius: 4px;
@@ -34,4 +38,15 @@
       }
     }
   }
+}
+
+footer{
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #27303f;
+  color: white;
 }
