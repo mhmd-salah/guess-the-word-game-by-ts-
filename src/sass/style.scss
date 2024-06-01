@@ -1,29 +1,30 @@
 @use "base/" as *;
 @use "abstracts/" as *;
+@use "layout";
 
-.guess-game{
+.guess-game {
   text-align: center;
   width: 1000px;
   margin: 20px auto;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  .game-area{
+  .game-area {
     text-align: center;
   }
-  .key-colors{
-    h2{
+  .key-colors {
+    h2 {
       margin-bottom: 15px;
     }
-    .key-color{
+    .key-color {
       display: flex;
       align-items: center;
       padding: 15px;
       background-color: white;
       margin-bottom: 14px;
-      .key{
-        @each $class,$color in $colorsC{
-          &.#{$class}{
+      .key {
+        @each $class, $color in $colorsC {
+          &.#{$class} {
             background-color: $color;
           }
         }
@@ -32,7 +33,7 @@
         border-radius: 4px;
         margin-right: 10px;
       }
-      .key-text{
+      .key-text {
         font-size: 16px;
         font-family: bold;
       }
@@ -40,13 +41,4 @@
   }
 }
 
-footer{
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #27303f;
-  color: white;
-}
+

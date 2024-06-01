@@ -82,15 +82,4 @@ h1::after {
   font-family: bold;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #27303f;
-  color: white;
-}
-
 /*# sourceMappingURL=style.css.map */

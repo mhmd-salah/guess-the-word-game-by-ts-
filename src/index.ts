@@ -6,5 +6,9 @@ document.querySelector(
 )!.innerHTML = `${gameName} Game Created With Elzero `;
 
 // settings game options
-let numberOfTries:number = 5;
+let numberOfTries: number = 5;
 
+function myFunction(a:string, n:number) {
+  let arr = a.split("");
+  return arr[n];
+}
