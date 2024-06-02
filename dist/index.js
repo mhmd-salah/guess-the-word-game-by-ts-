@@ -3,6 +3,12 @@ let gameName = "Guess The Word";
 document.title = gameName;
 document.querySelector("h1").innerHTML = gameName;
 document.querySelector("footer").innerHTML = `${gameName} Game Created With Elzero `;
+// loading
+let load = document.querySelector(".load");
+console.log(load);
+setTimeout(() => {
+    load === null || load === void 0 ? void 0 : load.remove();
+}, 2000);
 // settings game options
 let numberOfTries = 5;
 let numberOfLetters = 6;

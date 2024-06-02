@@ -5,6 +5,13 @@ document.querySelector(
   "footer"
 )!.innerHTML = `${gameName} Game Created With Elzero `;
 
+// loading
+let load = document.querySelector(".load");
+console.log(load)
+setTimeout(() => {
+  load?.remove()
+}, 2000);
+
 // settings game options
 let numberOfTries: number = 5;
 let numberOfLetters = 6;
