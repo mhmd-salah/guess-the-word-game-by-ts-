@@ -27,7 +27,19 @@ function generateInputs() {
     (inputsContainer === null || inputsContainer === void 0 ? void 0 : inputsContainer.children[0].children[1]).focus();
     // disable all inputs except first one
     let inputsInDisabledDiv = document.querySelectorAll(".disabled-inputs input");
-    inputsInDisabledDiv.forEach((input) => { input.disabled = true; });
+    inputsInDisabledDiv.forEach((input) => {
+        input.disabled = true;
+    });
+    const inputs = document.querySelectorAll("input");
+    inputs.forEach((input, index) => {
+        //convert input to upper case
+        input.addEventListener("input", function () {
+            this.value = this.value.toUpperCase();
+            const nextInput = inputs[index + 1];
+            if (nextInput)
+                nextInput.focus();
+        });
+    });
 }
 window.onload = function () {
     generateInputs();
