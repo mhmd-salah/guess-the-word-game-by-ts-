@@ -108,6 +108,36 @@ footer {
   outline-color: #27303f;
   border: none;
 }
+.guess-game .game-area .control {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.guess-game .game-area .control button {
+  padding: 6px 10px;
+  font-size: 23px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  transition: background-color 0.3s, scale 0.2s;
+  cursor: pointer;
+}
+.guess-game .game-area .control button:active {
+  scale: 0.97;
+}
+.guess-game .game-area .control button:hover {
+  opacity: 0.9;
+}
+.guess-game .game-area .control button.check {
+  background-color: #f44336;
+  flex-shrink: 1;
+  width: 65%;
+}
+.guess-game .game-area .control button.hint {
+  width: 30%;
+  background-color: #009688;
+}
 .guess-game .key-colors h2 {
   margin-bottom: 15px;
 }

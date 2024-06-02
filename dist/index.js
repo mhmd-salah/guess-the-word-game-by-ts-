@@ -39,6 +39,19 @@ function generateInputs() {
             if (nextInput)
                 nextInput.focus();
         });
+        input.addEventListener("keydown", function (event) {
+            const currentIndex = Array.from(inputs).indexOf(this);
+            if (event.key === "ArrowRight") {
+                const nextInput = currentIndex + 1;
+                if (nextInput < inputs.length)
+                    inputs[nextInput].focus();
+            }
+            if (event.key === "ArrowLeft") {
+                const prevInput = currentIndex - 1;
+                if (prevInput >= 0)
+                    inputs[prevInput].focus();
+            }
+        });
     });
 }
 window.onload = function () {
