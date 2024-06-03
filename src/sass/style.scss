@@ -2,7 +2,7 @@
 @use "abstracts/" as *;
 @use "layout";
 
-.load{
+.load {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -15,7 +15,7 @@
   animation-iteration-count: 1;
 }
 @keyframes load {
-  100%{
+  100% {
     backdrop-filter: blur(0);
   }
 }
@@ -67,31 +67,47 @@
         }
       }
     }
+    .message{
+      margin-block: 20px;
+      font-size: 25px;
+      text-transform: capitalize;
+      span{
+        color: white;
+        padding: 3px 4px;
+        border-radius: 4px;
+        &.correct{
+        background-color: $in-place;
+        }
+        &.no{
+          background-color: #333;
+        }
+      }
+    }
     .control {
       width: 100%;
       display: flex;
       justify-content: space-between;
-      button{
+      button {
         padding: 6px 10px;
         font-size: 23px;
         font-weight: bold;
         border: none;
         border-radius: 4px;
         color: white;
-        transition: background-color .3s,scale .2s;
+        transition: background-color 0.3s, scale 0.2s;
         cursor: pointer;
-        &:active{
-          scale: .97;
+        &:active {
+          scale: 0.97;
         }
-        &:hover{
-          opacity: .9;
+        &:hover {
+          opacity: 0.9;
         }
-        &.check{
+        &.check {
           background-color: $primary-color;
           flex-shrink: 1;
           width: 65%;
         }
-        &.hint{
+        &.hint {
           width: 30%;
           background-color: #009688;
         }

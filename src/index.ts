@@ -1,3 +1,4 @@
+let log = console.log;
 let gameName = "Guess The Word";
 document.title = gameName;
 document.querySelector("h1")!.innerHTML = gameName;
@@ -18,8 +19,9 @@ let currentTry = 1;
 
 //manage words
 let wrodToGuess = "";
-let words = ["Create", "Update", "Delete", "Master", "Branch"];
+let words = ["CREATE", "Update", "Delete", "Master", "Branch"];
 wrodToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
+let messageArea = document.querySelector(".message");
 
 function generateInputs() {
   let inputsContainer = document.querySelector(".inputs");
@@ -67,25 +69,46 @@ function generateInputs() {
 }
 const guessButton = document.querySelector(".check");
 guessButton?.addEventListener("click", handelGuesses);
-console.log(wrodToGuess)
+console.log(wrodToGuess);
 function handelGuesses() {
-  console.log(wrodToGuess)
+  console.log(wrodToGuess);
   let successGuess = true;
-  for(let i =1;i<=numberOfLetters;i++){
-    const inputFiled = document.querySelector(`#guess-${currentTry}-letter-${i}`) as HTMLInputElement
+  for (let i = 1; i <= numberOfLetters; i++) {
+    const inputFiled = document.querySelector(
+      `#guess-${currentTry}-letter-${i}`
+    ) as HTMLInputElement;
     const letter = inputFiled.value.toLowerCase();
-    const actualLetter = wrodToGuess[1 -  1]
+    const actualLetter = wrodToGuess[i - 1];
     //game logic
-    if(letter === actualLetter){
-      inputFiled.classList.add("in-place")
-    }else if(wrodToGuess.includes(letter)){
-      inputFiled.classList.add("not-in-place")
-    }else{
-      inputFiled.classList.add("no")
+    if (letter === actualLetter && letter !== "") {
+      // letter in place
+      inputFiled.classList.add("in-place");
+    } else if (wrodToGuess.includes(letter) && letter !== "") {
+      // letter exiest but not in place
+      inputFiled.classList.add("not-in-place");
+      successGuess = false;
+    } else {
+      // letter not exist
+      inputFiled.classList.add("no");
+      successGuess = false;
     }
   }
+  // check if user win or lose
+  let span = document.createElement("span");
+  span.appendChild(document.createTextNode(wrodToGuess));
+  if (successGuess) {
+    span.classList.add("correct");
+    messageArea!.innerHTML = `Your Wind The word is `;
+    messageArea?.appendChild(span);
+  } else {
+    let span = document.createElement("span");
+    span.appendChild(document.createTextNode(wrodToGuess));
+    log(span);
+    span.classList.add("no");
+    messageArea!.innerHTML = `Your loas The word is `;
+    messageArea?.appendChild(span);
+  }
 }
-
 window.onload = function () {
   generateInputs();
 };

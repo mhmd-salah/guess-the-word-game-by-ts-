@@ -126,6 +126,22 @@ footer {
   outline-color: #27303f;
   border: none;
 }
+.guess-game .game-area .message {
+  margin-block: 20px;
+  font-size: 25px;
+  text-transform: capitalize;
+}
+.guess-game .game-area .message span {
+  color: white;
+  padding: 3px 4px;
+  border-radius: 4px;
+}
+.guess-game .game-area .message span.correct {
+  background-color: #f89e13;
+}
+.guess-game .game-area .message span.no {
+  background-color: #333;
+}
 .guess-game .game-area .control {
   width: 100%;
   display: flex;
