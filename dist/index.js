@@ -5,7 +5,6 @@ document.querySelector("h1").innerHTML = gameName;
 document.querySelector("footer").innerHTML = `${gameName} Game Created With Elzero `;
 // loading
 let load = document.querySelector(".load");
-console.log(load);
 setTimeout(() => {
     load === null || load === void 0 ? void 0 : load.remove();
 }, 2000);
@@ -13,6 +12,10 @@ setTimeout(() => {
 let numberOfTries = 5;
 let numberOfLetters = 6;
 let currentTry = 1;
+//manage words
+let wrodToGuess = "";
+let words = ["Create", "Update", "Delete", "Master", "Branch"];
+wrodToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
 function generateInputs() {
     let inputsContainer = document.querySelector(".inputs");
     for (let i = 1; i <= numberOfTries; i++) {
@@ -59,6 +62,28 @@ function generateInputs() {
             }
         });
     });
+}
+const guessButton = document.querySelector(".check");
+guessButton === null || guessButton === void 0 ? void 0 : guessButton.addEventListener("click", handelGuesses);
+console.log(wrodToGuess);
+function handelGuesses() {
+    console.log(wrodToGuess);
+    let successGuess = true;
+    for (let i = 1; i <= numberOfLetters; i++) {
+        const inputFiled = document.querySelector(`#guess-${currentTry}-letter-${i}`);
+        const letter = inputFiled.value.toLowerCase();
+        const actualLetter = wrodToGuess[1 - 1];
+        //game logic
+        if (letter === actualLetter) {
+            inputFiled.classList.add("in-place");
+        }
+        else if (wrodToGuess.includes(letter)) {
+            inputFiled.classList.add("not-in-place");
+        }
+        else {
+            inputFiled.classList.add("no");
+        }
+    }
 }
 window.onload = function () {
     generateInputs();
