@@ -94,11 +94,15 @@ function handelGuesses() {
     // check if user win or lose
     let span = document.createElement("span");
     span.appendChild(document.createTextNode(wrodToGuess));
-    log(span);
     if (successGuess) {
         span.classList.add("correct");
-        messageArea.innerHTML = `Your Wind The word is `;
+        messageArea.innerHTML = `Your Win The word is `;
         messageArea === null || messageArea === void 0 ? void 0 : messageArea.appendChild(span);
+        //disabled all tryes
+        let allTries = document.querySelectorAll(".inputs > div");
+        allTries.forEach((tryDiv) => tryDiv.classList.add("disabled-inputs"));
+        guessButton.disabled = true;
+        guessButton.innerHTML = "Result";
     }
     else {
         let span = document.createElement("span");

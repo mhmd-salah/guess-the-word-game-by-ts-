@@ -96,9 +96,6 @@
         color: white;
         transition: background-color 0.3s, scale 0.2s;
         cursor: pointer;
-        &:active {
-          scale: 0.97;
-        }
         &:hover {
           opacity: 0.9;
         }
@@ -106,6 +103,11 @@
           background-color: $primary-color;
           flex-shrink: 1;
           width: 65%;
+          &:disabled{
+            cursor: no-drop;
+            background-color: #333;
+            opacity: .5;
+          }
         }
         &.hint {
           width: 30%;

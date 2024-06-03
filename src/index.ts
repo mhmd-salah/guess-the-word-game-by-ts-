@@ -98,8 +98,13 @@ function handelGuesses() {
   span.appendChild(document.createTextNode(wrodToGuess));
   if (successGuess) {
     span.classList.add("correct");
-    messageArea!.innerHTML = `Your Wind The word is `;
+    messageArea!.innerHTML = `Your Win The word is `;
     messageArea?.appendChild(span);
+    //disabled all tryes
+    let allTries = document.querySelectorAll(".inputs > div");
+    allTries.forEach((tryDiv) => tryDiv.classList.add("disabled-inputs"));
+    (guessButton as HTMLButtonElement).disabled = true;
+    guessButton!.innerHTML = "Result";
   } else {
     let span = document.createElement("span");
     span.appendChild(document.createTextNode(wrodToGuess));
@@ -107,6 +112,7 @@ function handelGuesses() {
     span.classList.add("no");
     messageArea!.innerHTML = `Your loas The word is `;
     messageArea?.appendChild(span);
+
   }
 }
 window.onload = function () {

@@ -157,9 +157,6 @@ footer {
   transition: background-color 0.3s, scale 0.2s;
   cursor: pointer;
 }
-.guess-game .game-area .control button:active {
-  scale: 0.97;
-}
 .guess-game .game-area .control button:hover {
   opacity: 0.9;
 }
@@ -167,6 +164,11 @@ footer {
   background-color: #f44336;
   flex-shrink: 1;
   width: 65%;
+}
+.guess-game .game-area .control button.check:disabled {
+  cursor: no-drop;
+  background-color: #333;
+  opacity: 0.5;
 }
 .guess-game .game-area .control button.hint {
   width: 30%;
