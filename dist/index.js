@@ -69,6 +69,7 @@ const guessButton = document.querySelector(".check");
 guessButton === null || guessButton === void 0 ? void 0 : guessButton.addEventListener("click", handelGuesses);
 console.log(wrodToGuess);
 function handelGuesses() {
+    var _a, _b;
     console.log(wrodToGuess);
     let successGuess = true;
     for (let i = 1; i <= numberOfLetters; i++) {
@@ -105,9 +106,18 @@ function handelGuesses() {
         guessButton.innerHTML = "Result";
     }
     else {
-        let span = document.createElement("span");
-        span.appendChild(document.createTextNode(wrodToGuess));
-        log(span);
+        (_a = document
+            .querySelector(`.try-${currentTry}`)) === null || _a === void 0 ? void 0 : _a.classList.add("disabled-inputs");
+        let currentTryInputs = document.querySelectorAll(`.try-${currentTry} input`);
+        currentTryInputs.forEach((input) => {
+            input.disabled = true;
+        });
+        currentTry++;
+        console.log(currentTry);
+        let nextTryInputs = document.querySelectorAll(`.try-${currentTry} input`);
+        nextTryInputs.forEach((input) => (input.disabled = false));
+        (_b = document
+            .querySelector(`.try-${currentTry}`)) === null || _b === void 0 ? void 0 : _b.classList.remove("disabled-inputs");
         span.classList.add("no");
         messageArea.innerHTML = `Your loas The word is `;
         messageArea === null || messageArea === void 0 ? void 0 : messageArea.appendChild(span);

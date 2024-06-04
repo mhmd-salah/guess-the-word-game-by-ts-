@@ -106,13 +106,31 @@ function handelGuesses() {
     (guessButton as HTMLButtonElement).disabled = true;
     guessButton!.innerHTML = "Result";
   } else {
-    let span = document.createElement("span");
-    span.appendChild(document.createTextNode(wrodToGuess));
-    log(span);
+    document
+      .querySelector(`.try-${currentTry}`)
+      ?.classList.add("disabled-inputs");
+    let currentTryInputs = document.querySelectorAll(
+      `.try-${currentTry} input`
+    );
+    currentTryInputs.forEach((input) => {
+      (input as HTMLInputElement).disabled = true;
+    });
+
+    currentTry++;
+    console.log(currentTry);
+
+    let nextTryInputs = document.querySelectorAll(`.try-${currentTry} input`);
+    nextTryInputs.forEach(
+      (input) => ((input as HTMLInputElement).disabled = false)
+    );
+
+    document
+      .querySelector(`.try-${currentTry}`)
+      ?.classList.remove("disabled-inputs");
+
     span.classList.add("no");
     messageArea!.innerHTML = `Your loas The word is `;
     messageArea?.appendChild(span);
-
   }
 }
 window.onload = function () {
