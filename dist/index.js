@@ -140,6 +140,7 @@ function handelGuesses() {
         }
     }
 }
+//handled hint button for add hint for user ;
 function getHint() {
     if (numberOfHints > 0) {
         numberOfHints--;
@@ -152,11 +153,11 @@ function getHint() {
     const enabeldInputs = document.querySelectorAll("input:not([disabled])");
     const emptyEnableInputs = Array.from(enabeldInputs).filter((input) => input.value === "");
     if (enabeldInputs.length > 0) {
-        const randomIndex = Math.floor(Math.random() * emptyEnableInputs.length);
-        const RandomInput = emptyEnableInputs[randomIndex];
-        const indexToFile = Array.from(emptyEnableInputs).indexOf(RandomInput);
-        if (indexToFile !== -1) {
-            RandomInput.value = wrodToGuess[indexToFile].toUpperCase();
+        const randomIndex = Math.floor(Math.random() * enabeldInputs.length);
+        const randomInput = enabeldInputs[randomIndex];
+        const indexToFill = Array.from(enabeldInputs).indexOf(randomInput);
+        if (indexToFill !== -1) {
+            randomInput.value = wrodToGuess[indexToFill].toUpperCase();
         }
     }
 }
