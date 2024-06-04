@@ -149,7 +149,6 @@ function handelGuesses() {
   }
 }
 
-
 //handled hint button for add hint for user ;
 function getHint() {
   if (numberOfHints > 0) {
@@ -166,7 +165,7 @@ function getHint() {
   );
   if (enabeldInputs.length > 0) {
     const randomIndex = Math.floor(Math.random() * enabeldInputs.length);
-    const randomInput = enabeldInputs[randomIndex] as HTMLInputElement ;
+    const randomInput = enabeldInputs[randomIndex] as HTMLInputElement;
     const indexToFill = Array.from(enabeldInputs).indexOf(randomInput);
     if (indexToFill !== -1) {
       randomInput.value = wrodToGuess[indexToFill].toUpperCase();
@@ -174,23 +173,23 @@ function getHint() {
   }
 }
 
-function handleBackSpace(e:any){
-  if(e.key ==="Backspace"){
-    const inputs = document.querySelectorAll("input:not([disabled])") ;
-    const currentIndex = Array.from(inputs).indexOf(document.activeElement as Element)
-    if(currentIndex >0 ){
+function handleBackSpace(e: any) {
+  if (e.key === "Backspace") {
+    const inputs = document.querySelectorAll("input:not([disabled])");
+    const currentIndex = Array.from(inputs).indexOf(
+      document.activeElement as Element
+    );
+    if (currentIndex > 0) {
       const currentInput = inputs[currentIndex] as HTMLInputElement;
-      const prevInput =  inputs[currentIndex - 1] as HTMLInputElement;
+      const prevInput = inputs[currentIndex - 1] as HTMLInputElement;
       currentInput.value = "";
       prevInput.value = "";
-      prevInput.focus()
+      prevInput.focus();
     }
   }
 }
 
-document.addEventListener("keydown",handleBackSpace)
-
-
+document.addEventListener("keydown", handleBackSpace);
 
 window.onload = function () {
   generateInputs();
