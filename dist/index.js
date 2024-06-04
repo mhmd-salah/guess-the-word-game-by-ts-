@@ -116,11 +116,18 @@ function handelGuesses() {
         console.log(currentTry);
         let nextTryInputs = document.querySelectorAll(`.try-${currentTry} input`);
         nextTryInputs.forEach((input) => (input.disabled = false));
-        (_b = document
-            .querySelector(`.try-${currentTry}`)) === null || _b === void 0 ? void 0 : _b.classList.remove("disabled-inputs");
-        span.classList.add("no");
-        messageArea.innerHTML = `Your loas The word is `;
-        messageArea === null || messageArea === void 0 ? void 0 : messageArea.appendChild(span);
+        let el = document.querySelector(`.try-${currentTry}`);
+        if (el) {
+            (_b = document
+                .querySelector(`.try-${currentTry}`)) === null || _b === void 0 ? void 0 : _b.classList.remove("disabled-inputs");
+            el.children[1].focus();
+        }
+        else {
+            span.classList.add("no");
+            messageArea.innerHTML = `Your loas The word is `;
+            messageArea === null || messageArea === void 0 ? void 0 : messageArea.appendChild(span);
+            guessButton.disabled = true;
+        }
     }
 }
 window.onload = function () {

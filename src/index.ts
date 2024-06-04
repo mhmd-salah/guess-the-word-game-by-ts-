@@ -124,13 +124,18 @@ function handelGuesses() {
       (input) => ((input as HTMLInputElement).disabled = false)
     );
 
-    document
-      .querySelector(`.try-${currentTry}`)
-      ?.classList.remove("disabled-inputs");
-
-    span.classList.add("no");
-    messageArea!.innerHTML = `Your loas The word is `;
-    messageArea?.appendChild(span);
+    let el = document.querySelector(`.try-${currentTry}`) as HTMLDivElement;
+    if (el) {
+      document
+        .querySelector(`.try-${currentTry}`)
+        ?.classList.remove("disabled-inputs");
+      (el.children[1] as HTMLInputElement).focus();
+    } else {
+      span.classList.add("no");
+      messageArea!.innerHTML = `Your loas The word is `;
+      messageArea?.appendChild(span);
+      (guessButton as HTMLButtonElement).disabled =true;
+    }
   }
 }
 window.onload = function () {
