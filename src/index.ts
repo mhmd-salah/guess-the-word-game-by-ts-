@@ -103,8 +103,12 @@ function handelGuesses() {
   let span = document.createElement("span");
   span.appendChild(document.createTextNode(wrodToGuess));
   if (successGuess) {
+    if (numberOfHints == 2) {
+      messageArea!.innerHTML = `Congratz, Your Win The word is `;
+    } else {
+      messageArea!.innerHTML = `Your Win The word is `;
+    }
     span.classList.add("correct");
-    messageArea!.innerHTML = `Your Win The word is `;
     messageArea?.appendChild(span);
     //disabled all tryes
     let allTries = document.querySelectorAll(".inputs > div");
@@ -158,12 +162,12 @@ function getHint() {
   const emptyEnableInputs = Array.from(enabeldInputs).filter(
     (input) => (input as HTMLInputElement).value === ""
   );
-  if(enabeldInputs.length > 0){
+  if (enabeldInputs.length > 0) {
     const randomIndex = Math.floor(Math.random() * emptyEnableInputs.length);
     const RandomInput = emptyEnableInputs[randomIndex] as HTMLInputElement;
-    const indexToFile = Array.from(emptyEnableInputs).indexOf(RandomInput)
-    if(indexToFile !== -1){
-      RandomInput.value = wrodToGuess[indexToFile].toUpperCase()
+    const indexToFile = Array.from(emptyEnableInputs).indexOf(RandomInput);
+    if (indexToFile !== -1) {
+      RandomInput.value = wrodToGuess[indexToFile].toUpperCase();
     }
   }
 }

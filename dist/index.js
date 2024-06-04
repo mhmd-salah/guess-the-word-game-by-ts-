@@ -101,8 +101,13 @@ function handelGuesses() {
     let span = document.createElement("span");
     span.appendChild(document.createTextNode(wrodToGuess));
     if (successGuess) {
+        if (numberOfHints == 2) {
+            messageArea.innerHTML = `Congratz, Your Win The word is `;
+        }
+        else {
+            messageArea.innerHTML = `Your Win The word is `;
+        }
         span.classList.add("correct");
-        messageArea.innerHTML = `Your Win The word is `;
         messageArea === null || messageArea === void 0 ? void 0 : messageArea.appendChild(span);
         //disabled all tryes
         let allTries = document.querySelectorAll(".inputs > div");
