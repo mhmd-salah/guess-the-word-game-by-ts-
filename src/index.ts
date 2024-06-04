@@ -14,14 +14,20 @@ setTimeout(() => {
 
 // settings game options
 let numberOfTries: number = 5;
-let numberOfLetters = 6;
-let currentTry = 1;
+let numberOfLetters: number = 6;
+let currentTry: number = 1;
+let numberOfHints: number = 2;
 
 //manage words
 let wrodToGuess = "";
 let words = ["CREATE", "Update", "Delete", "Master", "Branch"];
 wrodToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
 let messageArea = document.querySelector(".message");
+
+//manage hints
+document.querySelector(".hint span")!.innerHTML = String(numberOfHints);
+const getHintButton = document.querySelector(".hint") as HTMLButtonElement;
+getHintButton.addEventListener("click", getHint);
 
 function generateInputs() {
   let inputsContainer = document.querySelector(".inputs");
@@ -134,10 +140,34 @@ function handelGuesses() {
       span.classList.add("no");
       messageArea!.innerHTML = `Your loas The word is `;
       messageArea?.appendChild(span);
-      (guessButton as HTMLButtonElement).disabled =true;
+      (guessButton as HTMLButtonElement).disabled = true;
     }
   }
 }
+
+function getHint() {
+  if (numberOfHints > 0) {
+    numberOfHints--;
+    document.querySelector(".hint span")!.innerHTML = String(numberOfHints);
+  }
+  if (numberOfHints === 0) {
+    getHintButton.disabled = true;
+    getHintButton.classList.add("disabled");
+  }
+  const enabeldInputs = document.querySelectorAll("input:not([disabled])");
+  const emptyEnableInputs = Array.from(enabeldInputs).filter(
+    (input) => (input as HTMLInputElement).value === ""
+  );
+  if(enabeldInputs.length > 0){
+    const randomIndex = Math.floor(Math.random() * emptyEnableInputs.length);
+    const RandomInput = emptyEnableInputs[randomIndex] as HTMLInputElement;
+    const indexToFile = Array.from(emptyEnableInputs).indexOf(RandomInput)
+    if(indexToFile !== -1){
+      RandomInput.value = wrodToGuess[indexToFile].toUpperCase()
+    }
+  }
+}
+
 window.onload = function () {
   generateInputs();
 };

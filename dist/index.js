@@ -13,11 +13,16 @@ setTimeout(() => {
 let numberOfTries = 5;
 let numberOfLetters = 6;
 let currentTry = 1;
+let numberOfHints = 2;
 //manage words
 let wrodToGuess = "";
 let words = ["CREATE", "Update", "Delete", "Master", "Branch"];
 wrodToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
 let messageArea = document.querySelector(".message");
+//manage hints
+document.querySelector(".hint span").innerHTML = String(numberOfHints);
+const getHintButton = document.querySelector(".hint");
+getHintButton.addEventListener("click", getHint);
 function generateInputs() {
     let inputsContainer = document.querySelector(".inputs");
     for (let i = 1; i <= numberOfTries; i++) {
@@ -127,6 +132,26 @@ function handelGuesses() {
             messageArea.innerHTML = `Your loas The word is `;
             messageArea === null || messageArea === void 0 ? void 0 : messageArea.appendChild(span);
             guessButton.disabled = true;
+        }
+    }
+}
+function getHint() {
+    if (numberOfHints > 0) {
+        numberOfHints--;
+        document.querySelector(".hint span").innerHTML = String(numberOfHints);
+    }
+    if (numberOfHints === 0) {
+        getHintButton.disabled = true;
+        getHintButton.classList.add("disabled");
+    }
+    const enabeldInputs = document.querySelectorAll("input:not([disabled])");
+    const emptyEnableInputs = Array.from(enabeldInputs).filter((input) => input.value === "");
+    if (enabeldInputs.length > 0) {
+        const randomIndex = Math.floor(Math.random() * emptyEnableInputs.length);
+        const RandomInput = emptyEnableInputs[randomIndex];
+        const indexToFile = Array.from(emptyEnableInputs).indexOf(RandomInput);
+        if (indexToFile !== -1) {
+            RandomInput.value = wrodToGuess[indexToFile].toUpperCase();
         }
     }
 }

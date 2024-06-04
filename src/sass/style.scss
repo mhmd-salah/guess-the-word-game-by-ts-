@@ -112,6 +112,11 @@
         &.hint {
           width: 30%;
           background-color: #009688;
+          &:disabled{
+            background-color: #333;
+            opacity: .5;
+            cursor: no-drop;
+          }
         }
       }
     }
