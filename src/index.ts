@@ -12,6 +12,7 @@ setTimeout(() => {
   load?.remove();
 }, 2000);
 
+
 // settings game options
 let numberOfTries: number = 5;
 let numberOfLetters: number = 6;

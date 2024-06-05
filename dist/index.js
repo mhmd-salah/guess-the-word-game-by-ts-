@@ -9,6 +9,7 @@ let load = document.querySelector(".load");
 setTimeout(() => {
     load === null || load === void 0 ? void 0 : load.remove();
 }, 2000);
+console.log(load === null || load === void 0 ? void 0 : load.checkVisibility());
 // settings game options
 let numberOfTries = 5;
 let numberOfLetters = 6;
