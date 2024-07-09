@@ -1,5 +1,5 @@
 let log = console.log;
-let gameName = "Guess The Word";
+let gameName:string = "Guess The Word";
 document.title = gameName;
 document.querySelector("h1")!.innerHTML = gameName;
 document.querySelector(
@@ -7,11 +7,10 @@ document.querySelector(
 )!.innerHTML = `${gameName} Game Created With Elzero `;
 
 // loading
-let load = document.querySelector(".load");
+let load = document.querySelector(".load")as HTMLDivElement ;
 setTimeout(() => {
   load?.remove();
 }, 2000);
-
 
 // settings game options
 let numberOfTries: number = 5;
@@ -21,9 +20,15 @@ let numberOfHints: number = 2;
 
 //manage words
 let wrodToGuess = "";
-let words = ["CREATE", "Update", "Delete", "Master", "Branch"];
+let words: ["CREATE", "Update", "Delete", "Master", "Branch"] = [
+  "CREATE",
+  "Update",
+  "Delete",
+  "Master",
+  "Branch",
+];
 wrodToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
-let messageArea = document.querySelector(".message");
+let messageArea = document.querySelector(".message")as HTMLDivElement;
 
 //manage hints
 document.querySelector(".hint span")!.innerHTML = String(numberOfHints);
@@ -31,7 +36,7 @@ const getHintButton = document.querySelector(".hint") as HTMLButtonElement;
 getHintButton.addEventListener("click", getHint);
 
 function generateInputs() {
-  let inputsContainer = document.querySelector(".inputs");
+  let inputsContainer = document.querySelector(".inputs") as HTMLInputElement;
   for (let i = 1; i <= numberOfTries; i++) {
     let tryDiv = document.createElement("div") as HTMLDivElement;
     tryDiv.classList.add(`try-${i}`);
@@ -52,7 +57,8 @@ function generateInputs() {
   inputsInDisabledDiv.forEach((input) => {
     (input as HTMLInputElement).disabled = true;
   });
-  const inputs = document.querySelectorAll("input");
+  const inputs: NodeListOf<HTMLInputElement> =
+    document.querySelectorAll("input");
   inputs.forEach((input, index) => {
     //convert input to upper case
     input.addEventListener("input", function () {
@@ -62,7 +68,7 @@ function generateInputs() {
     });
 
     input.addEventListener("keydown", function (event) {
-      const currentIndex = Array.from(inputs).indexOf(this);
+      const currentIndex:number = Array.from(inputs).indexOf(this);
       if (event.key === "ArrowRight") {
         const nextInput = currentIndex + 1;
         if (nextInput < inputs.length) inputs[nextInput].focus();
@@ -77,14 +83,15 @@ function generateInputs() {
 const guessButton = document.querySelector(".check");
 guessButton?.addEventListener("click", handelGuesses);
 console.log(wrodToGuess);
+// handle Guesses function
 function handelGuesses() {
   console.log(wrodToGuess);
-  let successGuess = true;
+  let successGuess:boolean = true;
   for (let i = 1; i <= numberOfLetters; i++) {
     const inputFiled = document.querySelector(
       `#guess-${currentTry}-letter-${i}`
     ) as HTMLInputElement;
-    const letter = inputFiled.value.toLowerCase();
+    const letter = inputFiled.value.toLowerCase()
     const actualLetter = wrodToGuess[i - 1];
     //game logic
     if (letter === actualLetter && letter !== "") {

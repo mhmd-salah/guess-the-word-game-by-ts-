@@ -9,7 +9,6 @@ let load = document.querySelector(".load");
 setTimeout(() => {
     load === null || load === void 0 ? void 0 : load.remove();
 }, 2000);
-console.log(load === null || load === void 0 ? void 0 : load.checkVisibility());
 // settings game options
 let numberOfTries = 5;
 let numberOfLetters = 6;
@@ -17,7 +16,13 @@ let currentTry = 1;
 let numberOfHints = 2;
 //manage words
 let wrodToGuess = "";
-let words = ["CREATE", "Update", "Delete", "Master", "Branch"];
+let words = [
+    "CREATE",
+    "Update",
+    "Delete",
+    "Master",
+    "Branch",
+];
 wrodToGuess = words[Math.floor(Math.random() * words.length)].toLowerCase();
 let messageArea = document.querySelector(".message");
 //manage hints
@@ -74,6 +79,7 @@ function generateInputs() {
 const guessButton = document.querySelector(".check");
 guessButton === null || guessButton === void 0 ? void 0 : guessButton.addEventListener("click", handelGuesses);
 console.log(wrodToGuess);
+// handle Guesses function
 function handelGuesses() {
     var _a, _b;
     console.log(wrodToGuess);
